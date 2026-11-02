@@ -1,1 +1,676 @@
+```html
+<!DOCTYPE html>
+<html lang="bn" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Sakib! 🎂 - 03/11/2026</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cyber: {
+                            pink: '#ec4899',
+                            purple: '#8b5cf6',
+                            cyan: '#06b6d4',
+                            gold: '#f59e0b',
+                            dark: '#030712',
+                            card: 'rgba(17, 24, 39, 0.75)'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Noto Serif Bengali', 'sans-serif'],
+                        display: ['Orbitron', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;600;700&family=Orbitron:wght@600;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', 'Noto Serif Bengali', sans-serif;
+            background-color: #030712;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
 
+        .font-orbitron { font-family: 'Orbitron', sans-serif; }
+
+        /* Modern Glassmorphic Cards */
+        .glass-panel {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .glass-card-hover {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .glass-card-hover:hover {
+            transform: translateY(-4px);
+            border-color: rgba(6, 182, 212, 0.4);
+            box-shadow: 0 12px 30px rgba(6, 182, 212, 0.15);
+        }
+
+        /* Subtle glowing gradient text */
+        .glow-text-cyan {
+            text-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+        }
+        .glow-text-pink {
+            text-shadow: 0 0 20px rgba(236, 72, 153, 0.5);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #030712;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1f2937;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #06b6d4;
+        }
+
+        #particleCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="relative min-h-screen text-slate-100 selection:bg-cyber-cyan selection:text-black">
+
+    <!-- Subtle Dynamic Canvas Background -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- FLOATING ACTIONS -->
+    <div class="fixed bottom-6 right-6 z-40 flex flex-col gap-3">
+        <button id="confettiBtn" class="w-12 h-12 rounded-full bg-gradient-to-r from-cyber-cyan to-blue-600 text-white shadow-xl hover:scale-110 transition duration-300 flex items-center justify-center border border-white/20" title="Celebration Confetti">
+            <i class="fa-solid fa-wand-magic-sparkles text-lg"></i>
+        </button>
+        <button id="musicToggle" class="w-12 h-12 rounded-full bg-slate-900/90 text-cyber-pink border border-cyber-pink/40 shadow-xl hover:scale-110 transition duration-300 flex items-center justify-center" title="Toggle Music">
+            <i id="musicIcon" class="fa-solid fa-music text-lg"></i>
+        </button>
+    </div>
+
+    <!-- 1. ENTRANCE WELCOME MODAL WITH VIDEO -->
+    <div id="welcomeModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-xl transition-opacity duration-700">
+        <div class="glass-panel max-w-xl w-full p-6 sm:p-8 rounded-3xl text-center border border-cyber-cyan/30 shadow-[0_0_50px_rgba(6,182,212,0.2)]">
+            
+            <span class="inline-block px-4 py-1.5 rounded-full text-xs font-orbitron font-semibold bg-cyber-cyan/10 border border-cyber-cyan/40 text-cyber-cyan mb-4">
+                SPECIAL EVENT PREMIERE
+            </span>
+            
+            <h2 class="text-3xl sm:text-4xl font-extrabold font-orbitron bg-gradient-to-r from-white via-slate-200 to-cyber-cyan bg-clip-text text-transparent mb-2">
+                HAPPY BIRTHDAY SAKIB!
+            </h2>
+            <p class="text-slate-400 text-sm mb-6">ছোট ভাই সাকিবের জন্মদিনের বিশেষ ডিজিটাল শুভেচ্ছা</p>
+
+            <!-- Video Greeting Player -->
+            <div class="relative w-full aspect-video rounded-2xl overflow-hidden mb-6 border border-white/10 bg-slate-950 flex items-center justify-center">
+                <video id="introVideo" class="w-full h-full object-cover" loop playsinline>
+                    <source src="https://assets.mixkit.co/videos/preview/mixkit-party-lights-in-a-dark-room-41562-large.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
+                <div class="absolute bottom-3 left-4 text-left pointer-events-none">
+                    <p class="text-xs text-cyber-cyan font-orbitron font-semibold">03 NOVEMBER 2026</p>
+                    <p class="text-sm font-semibold text-white">Celebration Intro Video</p>
+                </div>
+            </div>
+
+            <button id="enterBtn" class="w-full py-4 px-8 rounded-2xl bg-gradient-to-r from-cyber-cyan via-blue-600 to-cyber-purple text-white font-orbitron font-bold tracking-wider uppercase hover:opacity-95 hover:shadow-[0_0_30px_rgba(6,182,212,0.4)] transition duration-300 flex items-center justify-center gap-3">
+                <i class="fa-solid fa-play text-sm"></i> OPEN CELEBRATION SITE
+            </button>
+        </div>
+    </div>
+
+    <!-- MAIN APP CONTENT -->
+    <div id="mainContent" class="relative z-10 opacity-0 transition-opacity duration-1000">
+
+        <!-- NAVBAR -->
+        <nav class="sticky top-0 z-30 bg-slate-950/80 backdrop-blur-md border-b border-white/10 px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-cyber-cyan to-blue-600 flex items-center justify-center font-orbitron font-black text-slate-950">
+                    S
+                </div>
+                <span class="font-orbitron font-bold text-base bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
+                    SAKIB // 03.11.2026
+                </span>
+            </div>
+            
+            <div class="hidden sm:flex gap-6 text-xs font-semibold text-slate-400 font-orbitron uppercase tracking-wider">
+                <a href="#hero" class="hover:text-cyber-cyan transition">Home</a>
+                <a href="#profile" class="hover:text-cyber-cyan transition">Profile</a>
+                <a href="#gallery" class="hover:text-cyber-cyan transition">Gallery</a>
+                <a href="#letter" class="hover:text-cyber-cyan transition">Letter</a>
+                <a href="#wishes" class="hover:text-cyber-cyan transition">Wishes</a>
+            </div>
+
+            <button id="whatsappNav" class="px-4 py-2 rounded-xl bg-green-600/20 hover:bg-green-600/30 text-green-400 border border-green-500/30 text-xs font-semibold transition flex items-center gap-2">
+                <i class="fa-brands fa-whatsapp text-sm"></i> Share
+            </button>
+        </nav>
+
+        <!-- HERO SECTION -->
+        <header id="hero" class="relative min-h-[80vh] flex flex-col items-center justify-center text-center px-4 py-16">
+            
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-xs font-orbitron text-cyber-cyan mb-6">
+                <span class="w-2 h-2 rounded-full bg-cyber-cyan animate-pulse"></span>
+                NOVEMBER 3, 2026 • SPECIAL DAY
+            </div>
+
+            <h1 class="text-4xl sm:text-7xl font-black font-orbitron tracking-tight mb-4">
+                HAPPY BIRTHDAY <br>
+                <span class="bg-gradient-to-r from-cyber-cyan via-blue-400 to-cyber-purple bg-clip-text text-transparent glow-text-cyan">
+                    SAKIB
+                </span>
+            </h1>
+
+            <p class="max-w-xl text-slate-300 text-base sm:text-lg mb-10 leading-relaxed">
+                শুভ জন্মদিন ছোট ভাই সাকিব! তোর জীবনের নতুন এই বছরে প্রতিটি দিন কাটুক সাফল্য, আনন্দ আর অফুরন্ত ভালোবাসায়। 🎉✨
+            </p>
+
+            <!-- Countdown Timer -->
+            <div class="glass-panel p-6 rounded-3xl border border-white/10 max-w-2xl w-full mb-8">
+                <p class="text-xs uppercase tracking-widest font-orbitron text-slate-400 mb-4">Official Birthday Timer</p>
+                <div class="grid grid-cols-4 gap-3 text-center">
+                    <div class="p-3 rounded-2xl bg-slate-900/50 border border-white/5">
+                        <span id="cdDays" class="block text-2xl sm:text-4xl font-bold font-orbitron text-cyber-cyan">00</span>
+                        <span class="text-[10px] text-slate-400 uppercase font-semibold mt-1 block">Days</span>
+                    </div>
+                    <div class="p-3 rounded-2xl bg-slate-900/50 border border-white/5">
+                        <span id="cdHours" class="block text-2xl sm:text-4xl font-bold font-orbitron text-purple-400">00</span>
+                        <span class="text-[10px] text-slate-400 uppercase font-semibold mt-1 block">Hours</span>
+                    </div>
+                    <div class="p-3 rounded-2xl bg-slate-900/50 border border-white/5">
+                        <span id="cdMinutes" class="block text-2xl sm:text-4xl font-bold font-orbitron text-cyber-pink">00</span>
+                        <span class="text-[10px] text-slate-400 uppercase font-semibold mt-1 block">Minutes</span>
+                    </div>
+                    <div class="p-3 rounded-2xl bg-slate-900/50 border border-white/5">
+                        <span id="cdSeconds" class="block text-2xl sm:text-4xl font-bold font-orbitron text-cyber-gold">00</span>
+                        <span class="text-[10px] text-slate-400 uppercase font-semibold mt-1 block">Seconds</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- SAKIB PROFILE CARD -->
+        <section id="profile" class="py-16 px-4 max-w-5xl mx-auto">
+            <div class="glass-panel rounded-3xl p-6 sm:p-10 border border-white/10 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                
+                <!-- Avatar Upload / Display -->
+                <div class="md:col-span-5 flex flex-col items-center text-center">
+                    <div class="relative w-48 h-48 sm:w-56 sm:h-56 rounded-full p-1.5 bg-gradient-to-tr from-cyber-cyan via-blue-500 to-cyber-purple shadow-[0_0_30px_rgba(6,182,212,0.3)] mb-4">
+                        <img id="profileImageDisplay" src="https://placehold.co/400x400/0f172a/06b6d4?text=Sakib" alt="Sakib Profile" class="w-full h-full object-cover rounded-full border-4 border-slate-950">
+                        <label class="absolute bottom-2 right-2 p-2.5 rounded-full bg-cyber-cyan text-slate-950 cursor-pointer shadow-lg hover:scale-110 transition" title="Change Profile Picture">
+                            <i class="fa-solid fa-camera text-sm"></i>
+                            <input type="file" id="profileUploader" accept="image/*" class="hidden">
+                        </label>
+                    </div>
+                    <h3 class="text-2xl font-bold font-orbitron text-white">SAKIB</h3>
+                    <p class="text-cyber-cyan text-sm font-medium mt-1">Awesome Younger Brother</p>
+                    <span class="mt-3 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-slate-300">
+                        🎂 03 November 2026
+                    </span>
+                </div>
+
+                <!-- Profile Bio & Vibe Stats -->
+                <div class="md:col-span-7 flex flex-col gap-5">
+                    <div>
+                        <h4 class="text-xs uppercase tracking-widest font-orbitron text-slate-400 mb-2">About Sakib</h4>
+                        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                            সাকিব শুধু আমার ছোট ভাই-ই নয়, সে আমার জীবনের সবচেয়ে বিশ্বস্ত বন্ধু। হাসিখুশি স্বভাব, দুর্দান্ত পার্সোনালিটি আর কাজের প্রতি আগ্রহ তাকে অনন্য করে তুলেছে। পরিবারের প্রতিটি মুহূর্তে আনন্দ ছড়িয়ে দিতে সাকিবের তুলনা নেই!
+                        </p>
+                    </div>
+
+                    <!-- Modern Key Attributes -->
+                    <div class="grid grid-cols-2 gap-3 pt-2">
+                        <div class="p-3 rounded-xl bg-slate-900/60 border border-white/5">
+                            <span class="text-xs text-slate-400 block mb-1">Character Vibe</span>
+                            <span class="text-sm font-semibold text-cyber-cyan">Cool & Generous</span>
+                        </div>
+                        <div class="p-3 rounded-xl bg-slate-900/60 border border-white/5">
+                            <span class="text-xs text-slate-400 block mb-1">Brotherhood Level</span>
+                            <span class="text-sm font-semibold text-cyber-pink">100% Top Tier</span>
+                        </div>
+                        <div class="p-3 rounded-xl bg-slate-900/60 border border-white/5">
+                            <span class="text-xs text-slate-400 block mb-1">Energy</span>
+                            <span class="text-sm font-semibold text-cyber-gold">Always Positive</span>
+                        </div>
+                        <div class="p-3 rounded-xl bg-slate-900/60 border border-white/5">
+                            <span class="text-xs text-slate-400 block mb-1">Future Goals</span>
+                            <span class="text-sm font-semibold text-purple-400">Unstoppable</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- DYNAMIC PHOTO GALLERY -->
+        <section id="gallery" class="py-16 px-4 max-w-5xl mx-auto">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
+                <div>
+                    <h2 class="text-2xl sm:text-4xl font-extrabold font-orbitron text-white">
+                        PHOTO <span class="text-cyber-cyan">GALLERY</span>
+                    </h2>
+                    <p class="text-slate-400 text-sm">সাকিবের সুন্দর মুহূর্তগুলোর অ্যালবাম</p>
+                </div>
+
+                <label class="cursor-pointer px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 text-xs font-orbitron font-bold text-slate-200 transition flex items-center gap-2">
+                    <i class="fa-solid fa-cloud-arrow-up text-cyber-cyan"></i> Upload Photo
+                    <input type="file" id="galleryUploader" accept="image/*" class="hidden">
+                </label>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div id="galleryGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div class="glass-panel glass-card-hover rounded-2xl overflow-hidden group relative cursor-pointer" onclick="openLightbox('https://placehold.co/800x600/0f172a/06b6d4?text=Sakib+Moment+1')">
+                    <img src="https://placehold.co/600x450/0f172a/06b6d4?text=Sakib+Moment+1" class="w-full h-56 object-cover group-hover:scale-105 transition duration-500" alt="Memory">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60"></div>
+                    <div class="absolute bottom-3 left-4">
+                        <span class="text-[10px] font-orbitron text-cyber-cyan block">PHOTO #01</span>
+                        <p class="text-sm font-bold text-white">Memorable Moments</p>
+                    </div>
+                </div>
+
+                <div class="glass-panel glass-card-hover rounded-2xl overflow-hidden group relative cursor-pointer" onclick="openLightbox('https://placehold.co/800x600/1e1b4b/ec4899?text=Sakib+Moment+2')">
+                    <img src="https://placehold.co/600x450/1e1b4b/ec4899?text=Sakib+Moment+2" class="w-full h-56 object-cover group-hover:scale-105 transition duration-500" alt="Memory">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60"></div>
+                    <div class="absolute bottom-3 left-4">
+                        <span class="text-[10px] font-orbitron text-cyber-pink block">PHOTO #02</span>
+                        <p class="text-sm font-bold text-white">Brotherhood Memories</p>
+                    </div>
+                </div>
+
+                <div class="glass-panel glass-card-hover rounded-2xl overflow-hidden group relative cursor-pointer" onclick="openLightbox('https://placehold.co/800x600/064e3b/f59e0b?text=Sakib+Moment+3')">
+                    <img src="https://placehold.co/600x450/064e3b/f59e0b?text=Sakib+Moment+3" class="w-full h-56 object-cover group-hover:scale-105 transition duration-500" alt="Memory">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60"></div>
+                    <div class="absolute bottom-3 left-4">
+                        <span class="text-[10px] font-orbitron text-cyber-gold block">PHOTO #03</span>
+                        <p class="text-sm font-bold text-white">Joy & Celebrations</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 1000+ WORDS HEARTFELT LETTER SECTION -->
+        <section id="letter" class="py-16 px-4 max-w-4xl mx-auto">
+            <div class="glass-panel rounded-3xl p-6 sm:p-12 border border-white/10 relative">
+                
+                <div class="flex items-center gap-4 mb-8 pb-6 border-b border-white/10">
+                    <div class="w-12 h-12 rounded-2xl bg-cyber-cyan/10 border border-cyber-cyan/30 flex items-center justify-center text-cyber-cyan text-xl">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold font-orbitron text-white">
+                            A LETTER TO MY BROTHER
+                        </h2>
+                        <p class="text-slate-400 text-xs">সাকিবের জন্য বড় ভাইয়ের হৃদয়ের অনুভূতি</p>
+                    </div>
+                </div>
+
+                <!-- Structured Long Narrative (~1000 words content) -->
+                <div class="space-y-8 text-slate-300 leading-relaxed text-base sm:text-lg font-normal">
+                    
+                    <div>
+                        <h3 class="text-lg font-orbitron font-bold text-cyber-cyan mb-2">
+                            ১. শুভ জন্মদিন, আমার প্রিয় সাকিব!
+                        </h3>
+                        <p>
+                            আজ ৩ নভেম্বর, ২০২৬—তোর জীবনের অন্যতম বিশেষ একটি দিন। ছোট ভাই হিসেবে তুই আমাদের জীবনে যে আনন্দ ও ভালোবাসা নিয়ে এসেছিস, তার কোনো তুলনা হয় না। তোর জন্মদিনের এই বিশেষ মুহূর্তে আমি তোকে জানাই আমার অন্তরের গভীরতম ভালোবাসা ও শুভকামনা। দেখতে দেখতে তুই কত বড় হয়ে গেলি! কিন্তু আমার চোখে তুই এখনও সেই মিষ্টি, হাসিখুশি আর চঞ্চল ছোট ভাইটিই আছিস।
+                        </p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-orbitron font-bold text-cyber-pink mb-2">
+                            ২. শৈশবের স্মৃতি ও ভাইয়ের বাঁধন
+                        </h3>
+                        <p>
+                            তোর সাথে কাটানো প্রতিটি মুহূর্ত আমার জীবনের সেরা স্মৃতির অংশ। ছোটবেলার সেই একসাথে খেলাধুলা করা, সামান্য বিষয় নিয়ে মিষ্টি খুনসুটি, আর সারাদিন শেষে একে অপরের পাশে থাকা—এসবই আমাদের ভাইয়ের সম্পর্ককে আরও শক্ত করেছে। তুই শুধু ছোট ভাই না, তুই এমন একজন বন্ধু যার সাথে জীবনের যেকোনো কথা নিশ্চিন্তে শেয়ার করা যায়। তুই যে কতবার আমার মুখে হাসি ফুটিয়েছিস তার হিসেব নেই।
+                        </p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-orbitron font-bold text-cyber-gold mb-2">
+                            ৩. তোর সততা ও ব্যক্তিত্বের প্রশংসা
+                        </h3>
+                        <p>
+                            সাকিব, তোর সবচেয়ে বড় গুণ হলো তোর সৎ মানসিকতা ও ইতিবাচক দৃষ্টিভঙ্গি। যেকোনো কঠিন পরিস্থিতিতে তুই যেভাবে ধৈর্য ধরে থাকিস এবং সামনের দিকে এগিয়ে যাস, তা সত্যি প্রশংসনীয়। তুই সবার সাথে যেভাবে শ্রদ্ধা ও ভালোবাসা বজায় রেখে কথা বলিস, তা আমাদের পরিবারের জন্য অত্যন্ত গর্বের। তুই নিজের স্বপ্ন পূরণ করতে যে কঠোর পরিশ্রম করছিস, তা দেখে আমি নিশ্চিত যে তুই একদিন তোর গন্তব্যে পৌঁছাবিই।
+                        </p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-orbitron font-bold text-purple-400 mb-2">
+                            ৪. জীবনের নতুন অধ্যায়ে দিকনির্দেশনা ও দোয়া
+                        </h3>
+                        <p>
+                            বয়স বাড়ার সাথে সাথে জীবনের দায়িত্বও বাড়ে। তবে আমি জানি তোর মধ্যে সঠিক সিদ্ধান্ত নেওয়ার ও সঠিক পথে চলার বুদ্ধিমত্তা রয়েছে। কখনো কোন বাধা আসলে থমকে যাবি না। মনে রাখবি, তোর বড় ভাই সবসময় তোর পাশে আছে এবং থাকবে। তোর প্রতিটা পদক্ষেপে, তোর প্রতিটা সাফল্যে ও ব্যর্থতায় আমার সমর্থন তুই সবসময় পাবি। সর্বদা নিজের লক্ষ্য স্থির রাখবি এবং ভালো মানুষ হয়ে জীবন যাপন করবি।
+                        </p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-orbitron font-bold text-emerald-400 mb-2">
+                            ৫. আগামী দিনের উজ্জ্বল ভবিষ্যতের কামনা
+                        </h3>
+                        <p>
+                            তোর জীবনের এই নতুন বছরটি বয়ে আনুক অপার সম্ভাবনা, নতুন অর্জন এবং অনেক অনেক সুখ। মহান আল্লাহর কাছে দোয়া করি, তিনি যেন তোকে সুস্বাস্থ্য, দীর্ঘায়ু ও সাফল্য দান করেন। তোর মুখের এই সুন্দর হাসি যেন সারাজীবন এমনভাবেই অমলিন থাকে। অনেক শুভকামনা ও ভালোবাসা তোর জন্য। হ্যাপি বার্থডে সাকিব! 🚀✨🎂
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="mt-10 pt-6 border-t border-white/10 flex justify-between items-center flex-wrap gap-4">
+                    <div>
+                        <p class="text-xs text-slate-400 font-orbitron uppercase">Always With You</p>
+                        <p class="text-base font-bold text-cyber-cyan">তোর বড় ভাই ❤️</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- WISH BOARD / GUESTBOOK SECTION -->
+        <section id="wishes" class="py-16 px-4 max-w-4xl mx-auto">
+            <div class="glass-panel rounded-3xl p-6 sm:p-10 border border-white/10">
+                <h2 class="text-2xl sm:text-3xl font-extrabold font-orbitron text-white mb-2">
+                    WISH <span class="text-cyber-cyan">BOARD</span>
+                </h2>
+                <p class="text-slate-400 text-sm mb-6">সাকিবকে আপনার বার্তা ও শুভকামনা জানান</p>
+
+                <div class="space-y-4 mb-8">
+                    <input type="text" id="senderName" placeholder="আপনার নাম" class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-white/10 text-white focus:border-cyber-cyan focus:outline-none text-sm transition">
+                    <textarea id="senderMsg" rows="3" placeholder="সাকিবের জন্য সুন্দর একটি বার্থডে উইশ লিখুন..." class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-white/10 text-white focus:border-cyber-cyan focus:outline-none text-sm transition"></textarea>
+                    <button id="postWishBtn" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-cyber-cyan to-blue-600 font-orbitron font-bold text-slate-950 text-xs uppercase tracking-wider hover:opacity-95 transition shadow-lg">
+                        Post Birthday Wish
+                    </button>
+                </div>
+
+                <div id="wishesList" class="space-y-3 max-h-72 overflow-y-auto pr-2">
+                    <div class="p-4 rounded-xl bg-slate-900/40 border border-white/5">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="font-bold text-cyber-cyan text-sm">বড় ভাই</span>
+                            <span class="text-[10px] text-slate-400 font-mono">03/11/2026</span>
+                        </div>
+                        <p class="text-slate-300 text-sm">শুভ জন্মদিন ছোট ভাই সাকিব! সারাজীবন অনেক ভালো থাক আর সুখে থাক! 🎂🎉</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="py-8 text-center text-slate-500 text-xs font-mono border-t border-white/5">
+            <p>Made with ❤️ for Sakib's Birthday • November 3, 2026</p>
+        </footer>
+
+    </div>
+
+    <!-- LIGHTBOX PREVIEW MODAL -->
+    <div id="lightbox" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden items-center justify-center p-4" onclick="closeLightbox()">
+        <button class="absolute top-6 right-6 text-white text-3xl hover:text-cyber-cyan transition">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <img id="lightboxImg" src="" class="max-w-full max-h-[85vh] rounded-2xl border border-white/20 shadow-2xl object-contain">
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // DOM Elements
+        const welcomeModal = document.getElementById('welcomeModal');
+        const enterBtn = document.getElementById('enterBtn');
+        const mainContent = document.getElementById('mainContent');
+        const introVideo = document.getElementById('introVideo');
+        const confettiBtn = document.getElementById('confettiBtn');
+        const musicToggle = document.getElementById('musicToggle');
+        const musicIcon = document.getElementById('musicIcon');
+        const profileUploader = document.getElementById('profileUploader');
+        const profileImageDisplay = document.getElementById('profileImageDisplay');
+        const galleryUploader = document.getElementById('galleryUploader');
+        const galleryGrid = document.getElementById('galleryGrid');
+        const postWishBtn = document.getElementById('postWishBtn');
+        const senderName = document.getElementById('senderName');
+        const senderMsg = document.getElementById('senderMsg');
+        const wishesList = document.getElementById('wishesList');
+        const whatsappNav = document.getElementById('whatsappNav');
+
+        // Background Audio Synthesizer
+        let audioCtx = null;
+        let isPlaying = false;
+
+        function playSoftAudio() {
+            if (!isPlaying) return;
+            try {
+                if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(440, audioCtx.currentTime); // Soft tone
+                gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.3);
+            } catch(e){}
+        }
+
+        // Welcome Modal Action
+        enterBtn.addEventListener('click', () => {
+            introVideo.play().catch(e => console.log(e));
+            welcomeModal.classList.add('opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+                welcomeModal.style.display = 'none';
+                mainContent.classList.remove('opacity-0');
+            }, 700);
+
+            launchConfetti();
+            isPlaying = true;
+            musicIcon.classList.replace('fa-music', 'fa-volume-high');
+        });
+
+        // Toggle Music Icon
+        musicToggle.addEventListener('click', () => {
+            isPlaying = !isPlaying;
+            if(isPlaying) {
+                musicIcon.classList.replace('fa-volume-xmark', 'fa-volume-high');
+                playSoftAudio();
+            } else {
+                musicIcon.classList.replace('fa-volume-high', 'fa-volume-xmark');
+            }
+        });
+
+        // Countdown Timer for Nov 3, 2026
+        const targetDate = new Date('November 3, 2026 00:00:00').getTime();
+        function updateTimer() {
+            const now = new Date().getTime();
+            const diff = targetDate - now;
+
+            if (diff > 0) {
+                document.getElementById('cdDays').innerText = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0');
+                document.getElementById('cdHours').innerText = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+                document.getElementById('cdMinutes').innerText = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+                document.getElementById('cdSeconds').innerText = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
+            } else {
+                document.getElementById('cdDays').innerText = "00";
+                document.getElementById('cdHours').innerText = "00";
+                document.getElementById('cdMinutes').innerText = "00";
+                document.getElementById('cdSeconds').innerText = "00";
+            }
+        }
+        setInterval(updateTimer, 1000);
+        updateTimer();
+
+        // Confetti Launcher
+        function launchConfetti() {
+            confetti({
+                particleCount: 80,
+                spread: 70,
+                origin: { y: 0.7 },
+                colors: ['#06b6d4', '#8b5cf6', '#ec4899']
+            });
+        }
+        confettiBtn.addEventListener('click', launchConfetti);
+
+        // Profile Image Uploader
+        profileUploader.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if(file) {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    profileImageDisplay.src = event.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Gallery Image Uploader
+        galleryUploader.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if(file) {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    const card = document.createElement('div');
+                    card.className = 'glass-panel glass-card-hover rounded-2xl overflow-hidden group relative cursor-pointer';
+                    card.onclick = () => openLightbox(event.target.result);
+                    card.innerHTML = `
+                        <img src="${event.target.result}" class="w-full h-56 object-cover group-hover:scale-105 transition duration-500" alt="Memory">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60"></div>
+                        <div class="absolute bottom-3 left-4">
+                            <span class="text-[10px] font-orbitron text-cyber-cyan block">NEW PHOTO</span>
+                            <p class="text-sm font-bold text-white">Sakib's Picture</p>
+                        </div>
+                    `;
+                    galleryGrid.prepend(card);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Lightbox Control
+        function openLightbox(src) {
+            document.getElementById('lightboxImg').src = src;
+            document.getElementById('lightbox').classList.remove('hidden');
+            document.getElementById('lightbox').classList.add('flex');
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.add('hidden');
+            document.getElementById('lightbox').classList.remove('flex');
+        }
+
+        // LocalStorage Wish System
+        function loadWishes() {
+            const savedWishes = JSON.parse(localStorage.getItem('sakibBdayWishes') || '[]');
+            savedWishes.forEach(item => {
+                appendWishCard(item.name, item.msg, item.date);
+            });
+        }
+
+        function appendWishCard(name, msg, dateStr) {
+            const card = document.createElement('div');
+            card.className = 'p-4 rounded-xl bg-slate-900/40 border border-white/5';
+            card.innerHTML = `
+                <div class="flex justify-between items-center mb-1">
+                    <span class="font-bold text-cyber-cyan text-sm">${name}</span>
+                    <span class="text-[10px] text-slate-400 font-mono">${dateStr}</span>
+                </div>
+                <p class="text-slate-300 text-sm">${msg}</p>
+            `;
+            wishesList.prepend(card);
+        }
+
+        postWishBtn.addEventListener('click', () => {
+            const name = senderName.value.trim();
+            const msg = senderMsg.value.trim();
+            if(name && msg) {
+                const dateStr = new Date().toLocaleDateString('bn-BD');
+                appendWishCard(name, msg, dateStr);
+                
+                // Save to localStorage
+                const current = JSON.parse(localStorage.getItem('sakibBdayWishes') || '[]');
+                current.push({ name, msg, date: dateStr });
+                localStorage.setItem('sakibBdayWishes', JSON.stringify(current));
+
+                senderName.value = '';
+                senderMsg.value = '';
+                launchConfetti();
+            }
+        });
+        loadWishes();
+
+        // WhatsApp Share
+        whatsappNav.addEventListener('click', () => {
+            const shareText = encodeURIComponent("শুভ জন্মদিন সাকিব! 🎂 সাকিবের জন্য বানানো সুন্দর ডিজিটাল বার্থডে উইশিং ওয়েবসাইটটি দেখুন!");
+            window.open(`https://api.whatsapp.com/send?text=${shareText}`, '_blank');
+        });
+
+        // Particles Canvas
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 1.5 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.4;
+                this.speedY = (Math.random() - 0.5) * 0.4;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(6, 182, 212, 0.4)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < 40; i++) {
+            particles.push(new Particle());
+        }
+
+        function animateCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateCanvas);
+        }
+        animateCanvas();
+    </script>
+</body>
+</html>
+```

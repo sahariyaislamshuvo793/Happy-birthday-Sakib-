@@ -42,7 +42,6 @@
             background-attachment: fixed;
         }
 
-        /* Ambient Glow Background Element */
         .ambient-glow {
             position: fixed;
             top: 50%;
@@ -63,7 +62,6 @@
             z-index: 1;
         }
 
-        /* Glassmorphic Container Styling */
         .glass-panel {
             background: var(--card-bg);
             backdrop-filter: blur(16px);
@@ -80,7 +78,6 @@
             border-color: rgba(99, 102, 241, 0.3);
         }
 
-        /* Welcome Video Overlay / Intro Hero */
         .video-container {
             position: relative;
             width: 100%;
@@ -114,7 +111,6 @@
             gap: 8px;
         }
 
-        /* Profile Header Section */
         .profile-header {
             display: grid;
             grid-template-columns: 280px 1fr;
@@ -165,7 +161,6 @@
             font-size: 0.95rem;
         }
 
-        /* Gallery Grid */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -194,7 +189,6 @@
             object-fit: cover;
         }
 
-        /* Long Form Tribute Story Styling */
         .tribute-story {
             line-height: 1.9;
             color: #cbd5e1;
@@ -214,7 +208,6 @@
             padding-left: 12px;
         }
 
-        /* Wishboard Form & Messages */
         .wish-form {
             display: flex;
             flex-direction: column;
@@ -277,7 +270,6 @@
             font-size: 0.95rem;
         }
 
-        /* Floating Audio Control */
         .audio-player-bar {
             position: fixed;
             bottom: 20px;
@@ -327,7 +319,7 @@
 
     <div class="container">
         
-        <!-- Video Hero Section -->
+        <!-- Intro Video Header -->
         <section class="glass-panel" style="padding: 1rem;">
             <div class="video-container">
                 <div class="video-overlay-badge">
@@ -340,19 +332,18 @@
             </div>
         </section>
 
-        <!-- Profile Overview Section -->
+        <!-- Profile Card Section -->
         <section class="glass-panel">
             <div class="profile-header">
                 <div class="avatar-wrapper">
-                    <!-- Profile Picture Updated -->
-                    <img id="profileImg" src="FB_IMG_1793638473176.jpg" alt="Sakib" class="avatar-img">
+                    <img id="profileImg" src="FB_IMG_1793638473176.jpg" alt="Sakib Profile" class="avatar-img">
                 </div>
                 <div class="profile-title">
                     <div class="date-badge">
                         <i class="fa-regular fa-calendar-check"></i> 03 November 2026
                     </div>
                     <h1 style="margin-top: 10px;">Happy Birthday, Sakib!</h1>
-                    <p>আজকের বিশেষ দিনে তোকে জানাই অনেক শুভকামনা ও ভালোবাসা। তুই শুধু ছোট ভাই নস, জীবনের অন্যতম সেরা সঙ্গী।</p>
+                    <p>রক্তের সম্পর্কের বাইরেও যে কাছের মানুষের জায়গা নেওয়া যায়, তুই তার সেরা উদাহরণ। শুভ জন্মদিন ছোট ভাই!</p>
                     
                     <button class="btn-submit" onclick="triggerConfetti()">
                         <i class="fa-solid fa-wand-magic-sparkles"></i> Celebrate Sakib!
@@ -361,7 +352,7 @@
             </div>
         </section>
 
-        <!-- Dynamic Photo Memory Wall -->
+        <!-- Photo Wall -->
         <section class="glass-panel">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
                 <h2><i class="fa-solid fa-camera-retro" style="color: var(--accent-cyan); margin-right: 8px;"></i> Memory Gallery</h2>
@@ -371,7 +362,6 @@
                 </label>
             </div>
             
-            <!-- Gallery Grid with Updated Images -->
             <div class="gallery-grid" id="galleryGrid">
                 <div class="gallery-item"><img src="IMG-20261102-WA0112.jpg" alt="Memory 1"></div>
                 <div class="gallery-item"><img src="file_00000000e7cc8208a9dc6ca0766bd8ee.png" alt="Memory 2"></div>
@@ -379,45 +369,45 @@
             </div>
         </section>
 
-        <!-- 1000+ Word Detailed Bengali Letter / Tribute -->
+        <!-- Dynamic Brotherhood Letter (Non-biological Close Brother Concept) -->
         <section class="glass-panel">
             <h2 style="margin-bottom: 1.5rem; font-size: 1.8rem;">
                 <i class="fa-solid fa-heart" style="color: var(--accent-pink); margin-right: 8px;"></i> 
-                ছোট ভাই সাকিবের জন্য বিশেষ ভালোবাসার বার্তা
+                কলিজার ছোট ভাই সাকিবের জন্য বিশেষ শুভকামনা
             </h2>
 
             <div class="tribute-story">
                 <p>
-                    শুভ জন্মদিন, সাকিব! দেখতে দেখতে আরও একটা বছর পার হয়ে গেল, আর তুই জীবনের নতুন একটি বয়সে পা দিলি। আজকের ৩রা নভেম্বর ২০২৬ তারিখটি আমাদের পরিবারের জন্য সবসময়ই একটি অত্যন্ত আনন্দের এবং আনন্দের বার্তা নিয়ে আসে। তুই যখন প্রথম আমাদের পরিবারে আসলি, সেই ছোট মুহূর্তগুলোর কথা আজও আমার পরিষ্কার মনে আছে। ছোটবেলা থেকে তোর বেড়ে ওঠা, তোর হাসি, তোর ছোট ছোট বায়না আর দুষ্টুমিগুলো আমাদের ঘরের পরিবেশকে সবসময় প্রাণবন্ত করে রেখেছে।
+                    শুভ জন্মদিন, সাকিব! দেখতে দেখতে আজ ৩রা নভেম্বর ২০২৬। আজকের এই শুভ দিনে তোকে জানাই হৃদয়ের গভীর থেকে একরাশ ভালোবাসা ও শুভকামনা। অনেকে বলে ভাই হতে হলে নাকি একই মায়ের পেটে জন্ম নিতে হয়, কিন্তু তোর আর আমার সম্পর্কের পর থেকে আমি বিশ্বাস করি—রক্তের সম্পর্কের চেয়েও আত্মিক টান আর মনের মিলের সম্পর্ক শতগুণে বড় হতে পারে। তুই আমার আপন ছোট ভাই না হলেও, তোর প্রতি আমার অধিকার, টান আর ভালোবাসা কোনো অংশে কম নয়।
                 </p>
 
-                <h3>১. শৈশবের স্মৃতিকথা ও বন্ধন</h3>
+                <h3>১. রক্তের বাঁধন নয়, হৃদয়ের বন্ধন</h3>
                 <p>
-                    ছোটবেলার স্মৃতিগুলো মানুষ কখনো ভুলে যায় না। তোকে নিয়ে ছোটবেলার কত শত গল্প আছে, যা হয়তো বলে শেষ করা যাবে না। একসঙ্গে মেলামেশা করা, একসাথে খেলাধুলা করা, সামান্য কারণে ঝগড়া করা আর পরক্ষণেই আবার সব ভুলে এক হয়ে যাওয়া—এসবই ছিল আমাদের নিত্যদিনের রুটিন। ভাই হিসেবে তোর সাথে আমার এই বন্ধনটা কেবল রক্তের না, এটি একটি গভীর বিশ্বাসের ও আস্থার সম্পর্ক। তোর কোনো সমস্যা হলে প্রথম যাকে তুই পাশে ভেবেছিস, তা আমি হতে পেরে গর্বিত।
+                    মানুষ জীবনে অনেক বন্ধু বা পরিচিত মানুষের দেখা পায়, কিন্তু খুব কম মানুষই থাকে যাদেরকে কোনো দ্বিধা ছাড়াই নিজের 'ভাই' বলে পরিচয় দেওয়া যায়। তুই আমার জীবনে তেমনই একজন। একসাথে কাটানো সময়গুলো, আড্ডা, হাসি-ঠাট্টা আর প্রয়োজনে একে অপরের পাশে দাঁড়ানো—সবকিছু মিলিয়ে তুই শুধু একজন বন্ধুই নস, তুই আমার নিজের ছোট ভাইয়ের থেকেও বড় কিছু। তোর সাথে কথা বললে বা তুই পাশে থাকলে একটা অদ্ভুত ভরসা পাই।
                 </p>
 
-                <h3>২. তোর ব্যক্তিত্ব ও পথচলা</h3>
+                <h3>২. তোর সততা ও ব্যক্তিত্ব</h3>
                 <p>
-                    তুই যত বড় হচ্ছিস, তোর চিন্তাভাবনা ও রুচিবোধের বিকাশ দেখে আমি সততই অভিভূত। সময়ের সাথে সাথে তুই নিজেকে যেভাবে নতুন করে গড়ে তুলছিস, তোর লক্ষ্য ও স্বপ্নের দিকে ধীরে ধীরে এগিয়ে যাচ্ছিস, তা সত্যিই প্রশংসনীয়। জীবনের প্রতিটি ধাপে বাধা-বিপত্তি আসবেই, কিন্তু তুই যেভাবে সব কিছু শক্ত হাতে সামলে নেওয়ার মনোভাব রাখিস, সেটাই তোর সবচেয়ে বড় শক্তি। তোর ভেতরের সততা, বিনয় এবং সবার প্রতি দায়িত্ববোধ তোকে সবসময় অন্যদের থেকে আলাদা এবং বিশেষ করে রাখে।
+                    তোর যে জিনিসটা আমাকে সবসময় মুগ্ধ করে, তা হলো তোর সরলতা আর মানুষের প্রতি তোর ব্যবহার। তুই তোর কাছের মানুষদের কতটা আগলে রাখিস আর মন থেকে ভালোবাসিস, সেটা আমি খুব ভালো করেই জানি। ছোট ভাই হিসেবে তোর মধ্যে যে বিনয়, সম্মান আর ভালোবাসা আছে—তা সত্যিই প্রশংসনীয়। জীবনের কঠিন সময়গুলোতে তোর ইতিবাচক মানসিকতা আর সিদ্ধান্ত নেওয়ার ক্ষমতা তোকে প্রতিনিয়ত এগিয়ে নিয়ে যাচ্ছে।
                 </p>
 
-                <h3>৩. আগামী দিনের জন্য বিশেষ শুভকামনা</h3>
+                <h3>৩. আগামী দিনের শুভকামনা ও অঙ্গীকার</h3>
                 <p>
-                    আজকের এই বিশেষ দিনে আমি পরম করুণাময়ের কাছে তোর জন্য একটি সুস্থ, সুন্দর এবং সফল জীবনের প্রার্থনা করি। তোর মনের যত সুপ্ত ইচ্ছা আছে, তোর যেসব স্বপ্ন তুই নিজের চোখে আঁকিস, তার সবই যেন বাস্তবে রূপ পায়। জীবনে কখনো হতাশ হবি না, মনে রাখবি ব্যর্থতা হলো নতুন কোনো সাফল্যের ভিত্তিপ্রস্তর। তুই জীবনের যে পথেই হাঁটিস না কেন, ভালো-খারাপ যেকোনো পরিস্থিতিতে বড় ভাই হিসেবে আমার হাত তোর মাথার ওপর এবং তোর পাশে সবসময় থাকবে।
+                    আজকের এই বিশেষ দিনে পরম করুণাময়ের কাছে একটাই প্রার্থনা—তোর জীবন যেন আলোয় ভরে ওঠে। তুই জীবনে যে লক্ষ্য নিয়ে এগোচ্ছিস, সেখানে যেন সর্বোচ্চ সাফল্য অর্জন করতে পারিস। ক্যারিয়ার, পড়াশোনা কিংবা ব্যক্তিগত জীবন—সব জায়গায় তুই বিজয়ী হ। মনে রাখবি, সামনে যত ঝড়-ঝাপটাই আসুক না কেন, পথ সহজ হোক কিংবা কঠিন—বড় ভাই হিসেবে তোর সুখে-দুঃখে আমি সবসময় তোর পাশে আছি এবং থাকব।
                 </p>
 
                 <p>
-                    তোর জীবনের প্রতিটা দিন যেন আনন্দময় হয়। তোর হাসিতে যেন সবসময় আমাদের বাড়িটা উজ্জ্বল হয়ে থাকে। ক্যারিয়ার, পড়ালেখা এবং ব্যক্তিগত জীবনের সকল উচ্চাকাঙ্ক্ষা যেন পূরণ হয়—এটাই আজকের দিনে আমার সবচেয়ে বড় চাওয়া।
+                    তোর মুখের ওই সুন্দর হাসিটা যেন আজীবন অমলিন থাকে। জন্মদিনের এই দিনটি তুই তোর প্রিয়জনদের সাথে অনেক আনন্দে কাটা। তুই আমাদের ভালোবাসার জায়গায় আছিস এবং সবসময় থাকবি।
                 </p>
 
                 <div style="margin-top: 2rem; border-top: 1px solid var(--card-border); padding-top: 1rem; font-style: italic; color: var(--accent-cyan);">
-                    — অনেক শুভকামনা ও ভালোবাসাসহ,<br>
+                    — তোর বড় ভাই,<br>
                     <strong>Sahariya Islam Shuvo</strong>
                 </div>
             </div>
         </section>
 
-        <!-- Dynamic Wishboard Section -->
+        <!-- Wishboard Section -->
         <section class="glass-panel">
             <h2><i class="fa-solid fa-comment-dots" style="color: var(--accent-glow); margin-right: 8px;"></i> Leave a Birthday Wish</h2>
             
@@ -440,7 +430,7 @@
 
     </div>
 
-    <!-- Background Audio Controller floating bar -->
+    <!-- Audio Control Player -->
     <div class="audio-player-bar">
         <button class="play-btn" onclick="toggleAudio()"><i class="fa-solid fa-music" id="audioIcon"></i></button>
         <span style="font-size: 0.85rem; color: #cbd5e1;">Birthday Atmosphere Track</span>
@@ -450,7 +440,6 @@
     </div>
 
     <script>
-        // Automatic Confetti Explosion on load
         window.addEventListener('load', () => {
             triggerConfetti();
             loadWishes();
@@ -464,7 +453,6 @@
             });
         }
 
-        // Image Uploader Handler
         function handleImageUpload(event) {
             const files = event.target.files;
             const galleryGrid = document.getElementById('galleryGrid');
@@ -483,7 +471,6 @@
             }
         }
 
-        // Audio Player Controls
         const audio = document.getElementById('bgAudio');
         const audioIcon = document.getElementById('audioIcon');
 
@@ -497,7 +484,6 @@
             }
         }
 
-        // Local Wishboard Management
         function submitWish(event) {
             event.preventDefault();
             const name = document.getElementById('wishName').value;
